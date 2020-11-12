@@ -1,4 +1,6 @@
 import dotenv
 
-# Load (common) .env variables
+# Load .env variables
 dotenv.load_dotenv()
+
+MODULES = []
