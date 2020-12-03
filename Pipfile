@@ -9,6 +9,9 @@ verify_ssl = true
 python-dotenv = "*"
 pygithub = "*"
 gitpython = "*"
+pandas = "*"
+numpy = "==1.19.3"
+nuitka = "*"
 
 [requires]
 python_version = "3.8"
