@@ -1,12 +1,16 @@
 import os
-import dotenv
+from os import path
+from configparser import ConfigParser
 
-# Load .env variables
-dotenv.load_dotenv()
+from utils.paths import ensure_directory
 
-MODULES = [
-    "modules.projects"
-]
+HOME_DIR = path.expanduser('~')
+ROOT_DIR = ensure_directory(path.join(HOME_DIR, '.lp-cli'))
+CONFIG_FILE = path.join(ROOT_DIR,'config.ini')
 
-GITHUB_ACCESS_TOKEN = os.getenv("GITHUB_ACCESS_TOKEN")
-PROJECTS_DIRECTORY = os.getenv("PROJECTS_DIRECTORY")
+# Parse configuration
+configuration = ConfigParser()
+if path.exists(CONFIG_FILE):
+    configuration.read(CONFIG_FILE)
+
+GITHUB_ACCESS_TOKEN = configuration.get('GITHUB','access_token',fallback=None)
